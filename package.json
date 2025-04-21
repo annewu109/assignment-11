@@ -1,5 +1,23 @@
 {
-  "dependencies": {
+  "name": "stocktickerapp",
+  "version": "1.0.0",
+  "description": "node app ",
+  "main": "part2.js",
+  "scripts": {
+  "start": "node part2.js"
+},
+"dependencies": {
     "mongodb": "^6.15.0"
-  }
+  },
+  "repository": {
+  "type": "git",
+  "url": ""
+},
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+  "url": ""
+},
+  "homepage": ""
+  
 }
