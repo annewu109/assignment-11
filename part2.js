@@ -54,7 +54,7 @@ const server = http.createServer((req, res) => {
       </html>
     `);
   } else if (req.method === 'POST' && req.url === '/submit') {
-    console.log("submit view");
+    // console.log("submit view");
     // // Handle form submission
     // let body = '';
     // req.on('data', chunk => {
@@ -107,6 +107,8 @@ const server = http.createServer((req, res) => {
     //     </html>
     //   `);
     // });
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end("hello world");
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('404 Not Found');
