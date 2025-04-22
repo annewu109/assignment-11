@@ -54,17 +54,17 @@ const server = http.createServer((req, res) => {
       </html>
     `);
   } else if (req.method === 'POST' && req.url === '/submit') {
-    // console.log("submit view");
-    // // Handle form submission
-    // let body = '';
-    // req.on('data', chunk => {
-    //   body += chunk.toString(); // convert Buffer to string
-    // });
+   
+    // Handle form submission
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString(); // convert Buffer to string
+    });
 
-    // req.on('end', async () => {
-    //   const parsedData = querystring.parse(body); // parses x-www-form-urlencoded
-    //   console.log('Form Data:', parsedData);
-
+    req.on('end', async () => {
+      const parsedData = querystring.parse(body); // parses x-www-form-urlencoded
+      console.log('Form Data:', parsedData);
+  });
     //   if (!parsedData.search_for || !parsedData.searchQuery) {
     //     console.error("Missing form data:", parsedData);
     //     res.writeHead(400, { 'Content-Type': 'text/plain' });
