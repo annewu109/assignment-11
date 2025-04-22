@@ -85,6 +85,7 @@ const server = http.createServer((req, res) => {
       if (searchResults == "") {
         searchResults = "<p>No results found.</p>"
       }
+      console.log(searchResults);
   });
     //   console.log(results);
     //   res.writeHead(200, { 'Content-Type': 'text/html' });
