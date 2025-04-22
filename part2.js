@@ -88,31 +88,28 @@ const server = http.createServer((req, res) => {
         searchResults = "<p>No results found.</p>"
       }
       console.log(searchResults);
-  });
-    //   console.log(results);
-    //   res.writeHead(200, { 'Content-Type': 'text/html' });
-    //   res.end(`
-    //     <html>
-    //         <head>
-    //          <style>
-    //          .search-result {
-    //             width: 30%;
-    //             background-color: aquamarine;
-    //             text-align: center;
-    //         }
-    //          </style>
-    //         </head>
-    //       <body>
-    //         <h2>Thank you!</h2>
-    //         <p>your search: ${parsedData.searchQuery}</p>
-    //         <p>your search type: ${parsedData.search_for}</p>
-    //         <h2>Search Results: </h2>`+ searchResults + `
-    //       </body>
-    //     </html>
-    //   `);
-    // });
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end("hello world");
+      console.log(results);
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(`
+        <html>
+            <head>
+             <style>
+             .search-result {
+                width: 30%;
+                background-color: aquamarine;
+                text-align: center;
+            }
+             </style>
+            </head>
+          <body>
+            <h2>Thank you!</h2>
+            <p>your search: ${parsedData.searchQuery}</p>
+            <p>your search type: ${parsedData.search_for}</p>
+            <h2>Search Results: </h2>`+ searchResults + `
+          </body>
+        </html>
+      `);
+    });
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('404 Not Found');
