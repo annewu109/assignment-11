@@ -72,19 +72,20 @@ const server = http.createServer((req, res) => {
       }
 
       const results = await run(parsedData.search_for, parsedData.searchQuery);
-    });
-    //   var searchResults = "";
-    //   results.forEach(function(result) {
-    //     searchResults += 
-    //     `<div class='search-result'>
-    //     <h3>${result['Company']}</h3> 
-    //     <h4>${result['Ticker']}</h4>
-    //     <p>${result['Price']}</p>
-    //     </div>`;
-    //   });
-    //   if (searchResults == "") {
-    //     searchResults = "<p>No results found.</p>"
-    //   }
+    
+      var searchResults = "";
+      results.forEach(function(result) {
+        searchResults += 
+        `<div class='search-result'>
+        <h3>${result['Company']}</h3> 
+        <h4>${result['Ticker']}</h4>
+        <p>${result['Price']}</p>
+        </div>`;
+      });
+      if (searchResults == "") {
+        searchResults = "<p>No results found.</p>"
+      }
+  });
     //   console.log(results);
     //   res.writeHead(200, { 'Content-Type': 'text/html' });
     //   res.end(`
