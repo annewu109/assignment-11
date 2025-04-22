@@ -70,9 +70,9 @@ const server = http.createServer((req, res) => {
         res.writeHead(400, { 'Content-Type': 'text/plain' });
         return res.end("Invalid input.");
       }
-
+      console.log("before run()");
       const results = await run(parsedData.search_for, parsedData.searchQuery);
-    
+      console.log("after run()");
       var searchResults = "";
       results.forEach(function(result) {
         searchResults += 
