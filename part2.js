@@ -64,15 +64,15 @@ const server = http.createServer((req, res) => {
     req.on('end', async () => {
       const parsedData = querystring.parse(body); // parses x-www-form-urlencoded
       console.log('Form Data:', parsedData);
-  });
-    //   if (!parsedData.search_for || !parsedData.searchQuery) {
-    //     console.error("Missing form data:", parsedData);
-    //     res.writeHead(400, { 'Content-Type': 'text/plain' });
-    //     return res.end("Invalid input.");
-    //   }
+  
+      if (!parsedData.search_for || !parsedData.searchQuery) {
+        console.error("Missing form data:", parsedData);
+        res.writeHead(400, { 'Content-Type': 'text/plain' });
+        return res.end("Invalid input.");
+      }
 
-    //   const results = await run(parsedData.search_for, parsedData.searchQuery);
-
+      const results = await run(parsedData.search_for, parsedData.searchQuery);
+    });
     //   var searchResults = "";
     //   results.forEach(function(result) {
     //     searchResults += 
