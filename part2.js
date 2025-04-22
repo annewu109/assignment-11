@@ -15,6 +15,7 @@ async function run(search_type, search_query) {
     try {
       console.log("before client.connect");
         await client.connect();
+        console.log("after client.connect");
         const database = client.db('Stock');
         const companies = database.collection('PublicCompanies');
 
