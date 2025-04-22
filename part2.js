@@ -1,7 +1,7 @@
 const http = require('http');
 const querystring = require('querystring');
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://annewu:Welcome1234@assignment10.ic7wyna.mongodb.net/?retryWrites=true&w=majority&appName=assignment10";
+const uri = "mongodb+srv://annewu:Welcome1234@assignment10.ic7wyna.mongodb.net/?retryWrites=true&w=majority&tls=true"
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
     serverApi: {

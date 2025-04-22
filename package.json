@@ -18,6 +18,9 @@
   "bugs": {
   "url": ""
 },
+"engines": {
+  "node": "20.x"
+},
   "homepage": ""
   
 }
