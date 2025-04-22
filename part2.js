@@ -13,6 +13,7 @@ const client = new MongoClient(uri, {
 
 async function run(search_type, search_query) {
     try {
+      console.log("before client.connect");
         await client.connect();
         const database = client.db('Stock');
         const companies = database.collection('PublicCompanies');
@@ -20,7 +21,7 @@ async function run(search_type, search_query) {
         const query = {
             [search_type]: { $regex: search_query, $options: 'i' }
         };
-
+        console.log("before find query");
         const cursor = companies.find(query);
         const results = await cursor.toArray(); // await first
         return results; // then return
