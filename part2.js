@@ -54,58 +54,59 @@ const server = http.createServer((req, res) => {
       </html>
     `);
   } else if (req.method === 'POST' && req.url === '/submit') {
-    // Handle form submission
-    let body = '';
-    req.on('data', chunk => {
-      body += chunk.toString(); // convert Buffer to string
-    });
+    console.log("submit view");
+    // // Handle form submission
+    // let body = '';
+    // req.on('data', chunk => {
+    //   body += chunk.toString(); // convert Buffer to string
+    // });
 
-    req.on('end', async () => {
-      const parsedData = querystring.parse(body); // parses x-www-form-urlencoded
-      console.log('Form Data:', parsedData);
+    // req.on('end', async () => {
+    //   const parsedData = querystring.parse(body); // parses x-www-form-urlencoded
+    //   console.log('Form Data:', parsedData);
 
-      if (!parsedData.search_for || !parsedData.searchQuery) {
-        console.error("Missing form data:", parsedData);
-        res.writeHead(400, { 'Content-Type': 'text/plain' });
-        return res.end("Invalid input.");
-      }
+    //   if (!parsedData.search_for || !parsedData.searchQuery) {
+    //     console.error("Missing form data:", parsedData);
+    //     res.writeHead(400, { 'Content-Type': 'text/plain' });
+    //     return res.end("Invalid input.");
+    //   }
 
-      const results = await run(parsedData.search_for, parsedData.searchQuery);
+    //   const results = await run(parsedData.search_for, parsedData.searchQuery);
 
-      var searchResults = "";
-      results.forEach(function(result) {
-        searchResults += 
-        `<div class='search-result'>
-        <h3>${result['Company']}</h3> 
-        <h4>${result['Ticker']}</h4>
-        <p>${result['Price']}</p>
-        </div>`;
-      });
-      if (searchResults == "") {
-        searchResults = "<p>No results found.</p>"
-      }
-      console.log(results);
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.end(`
-        <html>
-            <head>
-             <style>
-             .search-result {
-                width: 30%;
-                background-color: aquamarine;
-                text-align: center;
-            }
-             </style>
-            </head>
-          <body>
-            <h2>Thank you!</h2>
-            <p>your search: ${parsedData.searchQuery}</p>
-            <p>your search type: ${parsedData.search_for}</p>
-            <h2>Search Results: </h2>`+ searchResults + `
-          </body>
-        </html>
-      `);
-    });
+    //   var searchResults = "";
+    //   results.forEach(function(result) {
+    //     searchResults += 
+    //     `<div class='search-result'>
+    //     <h3>${result['Company']}</h3> 
+    //     <h4>${result['Ticker']}</h4>
+    //     <p>${result['Price']}</p>
+    //     </div>`;
+    //   });
+    //   if (searchResults == "") {
+    //     searchResults = "<p>No results found.</p>"
+    //   }
+    //   console.log(results);
+    //   res.writeHead(200, { 'Content-Type': 'text/html' });
+    //   res.end(`
+    //     <html>
+    //         <head>
+    //          <style>
+    //          .search-result {
+    //             width: 30%;
+    //             background-color: aquamarine;
+    //             text-align: center;
+    //         }
+    //          </style>
+    //         </head>
+    //       <body>
+    //         <h2>Thank you!</h2>
+    //         <p>your search: ${parsedData.searchQuery}</p>
+    //         <p>your search type: ${parsedData.search_for}</p>
+    //         <h2>Search Results: </h2>`+ searchResults + `
+    //       </body>
+    //     </html>
+    //   `);
+    // });
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('404 Not Found');
